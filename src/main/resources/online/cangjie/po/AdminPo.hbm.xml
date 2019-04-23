@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="online.cangjie.po">
+	<class name="online.cangjie.po.AdminPo" table="admins">
+		<id name="id">
+			<column name="id">
+			</column>
+		</id>
+		<property name="name">
+			<column name="name"></column>
+		</property>
+		<property name="username">
+			<column name="username"></column>
+		</property>
+		<property name="password">
+			<column name="password"></column>
+		</property>
+		<property name="sex">
+			<column name="sex"></column>
+		</property>
+		<property name="phone">
+			<column name="phone"></column>
+		</property>
+		<property name="email">
+			<column name="email"></column>
+		</property>
+		<property name="qq">
+			<column name="qq"></column>
+		</property>
+		<property name="state">
+			<column name="state"></column>
+		</property>
+		<property name="registration" type="date">
+			<column name="registration"></column>
+		</property>
+	</class>
+</hibernate-mapping>
