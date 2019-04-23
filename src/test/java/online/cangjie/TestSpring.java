@@ -24,4 +24,9 @@ public class TestSpring {
 		AdminPo admin1 = adminDao.selectAdminByUserNameAndPwd(admin);
 		System.out.println(admin1);
 	}
+	
+	@Test
+	public void sss(){
+		System.out.println("aaaaa");
+	}
 }
