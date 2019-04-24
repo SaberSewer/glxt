@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import online.cangjie.interfaces.AdminDao;
+import online.cangjie.interfaces.dao.AdminDao;
 import online.cangjie.po.AdminPo;
 
 @Service

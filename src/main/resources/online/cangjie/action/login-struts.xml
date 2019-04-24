@@ -2,9 +2,9 @@
 <!DOCTYPE struts SYSTEM "http://struts.apache.org/dtds/struts-2.3.dtd" >
 <struts>
 	<package name="login" namespace="/" extends="struts-default">
-		<action name="*" class="online.cangjie.action.LoginAction"
-			method="{1}">
-			<result name="success">/main.jsp</result>
+		<action name="login" class="loginAction" method="login">
+			<result name="isLogin">/index.jsp</result>
+			<result name="toLogin">/login.jsp</result>
 		</action>
 	</package>
 </struts>
