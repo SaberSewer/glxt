@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="online.cangjie.po">
+	<class name="online.cangjie.po.AdminPo" table="admins">
+		<id name="id">
+			<column name="id">
+			</column>
+		</id>
+		<property name="username">
+			<column name="username"></column>
+		</property>
+		<property name="loginTime">
+			<column name="login_time"></column>
+		</property>
+		<property name="loginAddress">
+			<column name="login_add"></column>
+		</property>
+		<property name="loginIP">
+			<column name="login_ip"></column>
+		</property>
+	</class>
+</hibernate-mapping>
