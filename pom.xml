@@ -19,10 +19,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.15</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.4.2.Final</version>
+			<version>4.3.11.Final</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
 		<dependency>
@@ -42,7 +43,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>5.1.6.RELEASE</version>
+			<version>4.1.9.RELEASE</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
@@ -56,20 +57,20 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>5.1.6.RELEASE</version>
+			<version>4.1.9.RELEASE</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>5.1.6.RELEASE</version>
+			<version>4.1.9.RELEASE</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>5.1.6.RELEASE</version>
+			<version>4.1.9.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -77,7 +78,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>5.1.6.RELEASE</version>
+			<version>4.1.9.RELEASE</version>
 		</dependency>
 	</dependencies>
 </project>

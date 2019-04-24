@@ -2,9 +2,9 @@ package online.cangjie.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class AdminDaoImpl implements AdminDao {
 	public AdminPo selectAdminByUserNameAndPwd(AdminPo admin) {
 		// TODO 通过用户名和密码查询
 		Session session = sessionFactory.openSession();
-		Query<AdminPo> query = session.createQuery("from AdminPo where username = ?0 and password = ?1");
+		Query query = session.createQuery("from AdminPo where username = ? and password = ?");
 		query.setParameter(0, admin.getUsername());
 		query.setParameter(1, admin.getPassword());
 		List<AdminPo> list = query.list();
