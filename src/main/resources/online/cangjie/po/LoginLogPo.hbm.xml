@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping package="online.cangjie.po">
-	<class name="online.cangjie.po.AdminPo" table="admins">
+	<class name="LoginLogPo" table="login_log">
 		<id name="id">
 			<column name="id">
 			</column>
@@ -9,7 +9,7 @@
 		<property name="username">
 			<column name="username"></column>
 		</property>
-		<property name="loginTime">
+		<property name="loginTime" type="date">
 			<column name="login_time"></column>
 		</property>
 		<property name="loginAddress">

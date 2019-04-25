@@ -24,6 +24,7 @@ public class LoginLogDaoimpl implements AdminLogDao {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		session.save(log);
+		session.flush();
 		session.close();
 	}
 	

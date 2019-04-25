@@ -1,5 +1,7 @@
 package online.cangjie;
 
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import online.cangjie.interfaces.dao.AdminDao;
+import online.cangjie.interfaces.dao.AdminLogDao;
 import online.cangjie.po.AdminPo;
+import online.cangjie.po.LoginLogPo;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -15,6 +19,9 @@ import online.cangjie.po.AdminPo;
 public class TestSpring {
 	@Autowired
 	private AdminDao adminDao;
+	@Autowired
+	private AdminLogDao adminLogDao;
+	
 	
 	@Test
 	public void testSpring(){
@@ -27,6 +34,7 @@ public class TestSpring {
 	
 	@Test
 	public void sss(){
-		System.out.println("aaaaa");
+		LoginLogPo log = new LoginLogPo(1, "cangjie", new Date(), "192", "192");
+		adminLogDao.insertLog(log);
 	}
 }
