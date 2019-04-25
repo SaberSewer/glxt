@@ -37,4 +37,13 @@ public class TestSpring {
 		LoginLogPo log = new LoginLogPo(1, "cangjie", new Date(), "192", "192");
 		adminLogDao.insertLog(log);
 	}
+	
+	@Test
+	public void testUpdatePWD(){
+		AdminPo admin = new AdminPo();
+		admin.setId(1);
+		admin.setPassword("123");
+		adminDao.updatePassword(admin);
+		
+	}
 }

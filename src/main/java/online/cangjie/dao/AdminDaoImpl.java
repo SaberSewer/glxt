@@ -39,8 +39,14 @@ public class AdminDaoImpl implements AdminDao {
 	public boolean updatePassword(AdminPo admin) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
-		
+		Query query = session.createQuery("update AdminPo set password = ? where id = ?");
+		query.setParameter(0, admin.getPassword());
+		query.setParameter(1, admin.getId());
+		int i = query.executeUpdate();
+		if(i != 1)
 		return false;
+		
+		return true;
 	}
 
 }
