@@ -6,5 +6,9 @@
 			<result name="isLogin">/index.jsp</result>
 			<result name="toLogin">/login.jsp</result>
 		</action>
+		
+		<action name="exit" class="loginAction" method="exit">
+			<result name="toLogin">/login.jsp</result>
+		</action>
 	</package>
 </struts>

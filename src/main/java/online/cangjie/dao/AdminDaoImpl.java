@@ -24,12 +24,23 @@ public class AdminDaoImpl implements AdminDao {
 		query.setParameter(0, admin.getUsername());
 		query.setParameter(1, admin.getPassword());
 		List<AdminPo> list = query.list();
+		AdminPo aaa = null;
 		try {
-
-		} finally {
+			 aaa = list.get(0);
+		} catch(IndexOutOfBoundsException e){
+			return null;
+		}finally {
 			session.close();
 		}
-		return list.get(0);
+		return aaa;
+	}
+
+	@Override
+	public boolean updatePassword(AdminPo admin) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		
+		return false;
 	}
 
 }

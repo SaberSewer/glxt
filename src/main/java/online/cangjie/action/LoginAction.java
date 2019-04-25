@@ -34,11 +34,19 @@ public class LoginAction extends ActionSupport {
 			Map<String, Object> map = ActionContext.getContext().getSession();
 			map.put("user", u);
 			map.put("login", true);
+			map.put("log", log);
 			return "isLogin";
 		}
 		return "toLogin";
 	}
-
+	
+	public String exit(){
+		Map<String, Object> map = ActionContext.getContext().getSession();
+		map.clear();
+		return "toLogin";
+	}
+	
+	
 	public LoginService getLoginService() {
 		return loginService;
 	}

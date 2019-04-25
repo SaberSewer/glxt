@@ -10,4 +10,7 @@
 		<bean id="loginAction" class="online.cangjie.action.LoginAction" scope="prototype">
 			<property name="loginService" ref="loginService" />
 		</bean>
+		<bean id="ajaxAction" class="onine.cangjie.action.AjaxAction" scope="prototype">
+			<property name="ajaxService" ref="ajaxAction"></property>
+		</bean>
 </beans>
