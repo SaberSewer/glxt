@@ -1,4 +1,4 @@
-package online.cangjie.service.utils;
+package online.cangjie.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

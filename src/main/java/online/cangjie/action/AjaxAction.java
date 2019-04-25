@@ -15,8 +15,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
 import online.cangjie.interfaces.service.AjaxService;
 import online.cangjie.po.AdminPo;
-import online.cangjie.service.utils.BeanUtil;
-import online.cangjie.service.utils.JSONUtil;
+import online.cangjie.utils.BeanUtil;
+import online.cangjie.utils.JSONUtil;
 
 public class AjaxAction extends ActionSupport {
 	@Autowired
