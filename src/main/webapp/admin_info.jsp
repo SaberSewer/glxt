@@ -34,7 +34,7 @@
      <div class="type_title">管理员信息 </div>
       <div class="xinxi">
         <div class="form-group"><label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户名： </label>
-          <div class="col-sm-9"><input type="text" name="用户名" id="website-title" value="<c:property value="#session.user.username" />" class="col-xs-7 text_info" disabled="disabled">
+          <div class="col-sm-9"><input type="text" name="用户名" id="website-title" readonly="readonly" value="<c:property value="#session.user.username" />" class="col-xs-7 text_info" disabled="disabled">
           &nbsp;&nbsp;&nbsp;<a href="javascript:ovid()" onclick="change_Password()" class="btn btn-warning btn-xs">修改密码</a></div>
           
           </div>
@@ -58,10 +58,10 @@
           <div class="col-sm-9"><input type="text" name="年龄" id="website-title" value="24" class="col-xs-7 text_info" disabled="disabled"></div>
           </div>
           <div class="form-group"><label class="col-sm-3 control-label no-padding-right" for="form-field-1">手机号码： </label>
-          <div class="col-sm-9"><input type="text" name="移动电话" id="website-title" value="<c:property value="#session.user.phone" />" class="col-xs-7 text_info" disabled="disabled"></div>
+          <div class="col-sm-9"><input type="text" name="手机号码" id="website-title" value="<c:property value="#session.user.phone" />" class="col-xs-7 text_info" disabled="disabled"></div>
           </div>
-          <div class="form-group"><label class="col-sm-3 control-label no-padding-right" for="form-field-1">电子邮箱： </label>
-          <div class="col-sm-9"><input type="text" name="电子邮箱" id="website-title" value="<c:property value="#session.user.email" />" class="col-xs-7 text_info" disabled="disabled"></div>
+          <div class="form-group"><label class="col-sm-3 control-label no-padding-right" for="form-field-1">电子： </label>
+          <div class="col-sm-9"><input type="text" name="邮箱" id="website-title" value="<c:property value="#session.user.email" />" class="col-xs-7 text_info" disabled="disabled"></div>
           </div>
           <div class="form-group"><label class="col-sm-3 control-label no-padding-right" for="form-field-1">QQ： </label>
           <div class="col-sm-9"><input type="text" name="QQ" id="website-title" value="<c:property value="#session.user.qq" />" class="col-xs-7 text_info" disabled="disabled"> </div>
@@ -114,9 +114,9 @@
  <!--修改密码样式-->
          <div class="change_Pass_style" id="change_Pass">
             <ul class="xg_style">
-             <li><label class="label_name">原&nbsp;&nbsp;密&nbsp;码</label><input name="原密码" type="password" class="" id="password"></li>
-             <li><label class="label_name">新&nbsp;&nbsp;密&nbsp;码</label><input name="新密码" type="password" class="" id="Nes_pas"></li>
-             <li><label class="label_name">确认密码</label><input name="再次确认密码" type="password" class="" id="c_mew_pas"></li>
+             <li><label class="label_name">原&nbsp;&nbsp;密&nbsp;码</label><input xxx="原密码" name="" type="password" class="" id="password"></li>
+             <li><label class="label_name">新&nbsp;&nbsp;密&nbsp;码</label><input xxx="新密码" name="" type="password" class="" id="Nes_pas"></li>
+             <li><label class="label_name">确认密码</label><input xxx="再次确认密码" name="" type="password" class="" id="c_mew_pas"></li>
               
             </ul>
      <!--       <div class="center"> <button class="btn btn-primary" type="button" id="submit">确认修改</button></div>-->
@@ -150,14 +150,44 @@ function save_info(){
 		  if(num>0){  return false;}	 	
           else{
 			  
-			   layer.alert('修改成功！',{
-               title: '提示框',				
-			   icon:1,			   		
-			  });
-			  $('#Personal').find('.xinxi').removeClass("hover");
-			  $('#Personal').find('.text_info').removeClass("add").attr("disabled", true);
-			  $('#Personal').find('.btn-success').css({'display':'none'});
-			   layer.close(index);
+        	  
+        	  
+        		var json = {};
+        		json.sex = $("性别").val();
+        		json.age = $("年龄").val();
+        		json.phone = $("手机号码").val();
+        		json.email = $("邮箱").val();
+        		json.qq = $("QQ").val();
+
+        		$.ajax({
+        			url: "changeInfo.do",
+        			type:"post",
+        			data: json,
+        			dataType : "json",
+        			contentType: "application/json",
+        			success: function (date){
+        				if(data.tag == "true"){
+        					layer.alert('修改成功！',{
+        	                  title: '提示框',				
+        	   			   icon:1,			   		
+        	   			  });
+        	   			  $('#Personal').find('.xinxi').removeClass("hover");
+        	   			  $('#Personal').find('.text_info').removeClass("add").attr("disabled", true);
+        	   			  $('#Personal').find('.btn-success').css({'display':'none'});
+        	   			   layer.close(index);
+        				}
+        				else {
+        					layer.alert('修改失败',{
+        	                  title: '提示框',				
+        	   			   icon:1,			   		
+        	   			  });
+        	   			  $('#Personal').find('.xinxi').removeClass("hover");
+        	   			  $('#Personal').find('.text_info').removeClass("add").attr("disabled", true);
+        	   			  $('#Personal').find('.btn-success').css({'display':'none'});
+        	   			   layer.close(index);
+        				}
+        			}
+        		})
 			
 		  }		  		
 	};	
@@ -214,15 +244,39 @@ function save_info(){
 			 return false;
         }   
 		 else{
+			 var date = {};
+			 date.oldpwd = $("#password").val();
+			 date.pwd = $("#Nes_pas").val();
+			 date.id = <c:property value="#session.user.id" />	;
 			 $.ajax({
-				 url
-			 })
+				 url : "changePWD.do",
+				 type : "post",
+				 data : date,
+				 dataType : "json",
+				 contentType : "application/json",
+				 success : function(req){
+					 console.log(req);
+					if(req.tag == "true"){
+						layer.alert('修改成功！请重新登录',{
+				               title: '提示框',				
+							icon:1,		
+							  });
+						 layer.close(index);     
+						 top.location.href="login.jsp";
+					}else{
+						layer.alert('修改失败',{
+				               title: '提示框',				
+							icon:1,		
+							  });
+						 layer.close(index);     
+						 
+					}
+					 
+				 }
+			 }) 
 			 
-			  layer.alert('修改成功！',{
-               title: '提示框',				
-			icon:1,		
-			  }); 
-			  layer.close(index);      
+			  
+			  
 		  }	 
 	}
     });

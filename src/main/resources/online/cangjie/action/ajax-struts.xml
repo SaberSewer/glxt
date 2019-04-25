@@ -2,8 +2,8 @@
 <!DOCTYPE struts SYSTEM "http://struts.apache.org/dtds/struts-2.3.dtd" >
 <struts>
 	<package name="ajax" namespace="/" extends="struts-default">
-		<action name="changePWD" class="ajaxAction">
-			
+		<action name="changePWD" class="ajaxAction" method="changePassword">
+			<result name="toLogin">/login.jsp</result>
 		</action>
 	</package>
 </struts>

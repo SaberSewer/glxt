@@ -11,6 +11,6 @@
 			<property name="loginService" ref="loginService" />
 		</bean>
 		<bean id="ajaxAction" class="online.cangjie.action.AjaxAction" scope="prototype">
-			<property name="ajaxService" ref="ajaxAction"></property>
+			<property name="ajaxService" ref="ajaxService"></property>
 		</bean>
 </beans>
