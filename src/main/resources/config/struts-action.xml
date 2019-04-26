@@ -13,4 +13,8 @@
 		<bean id="ajaxAction" class="online.cangjie.action.AjaxAction" scope="prototype">
 			<property name="ajaxService" ref="ajaxService"></property>
 		</bean>
+		
+		<bean id="listAction" class="online.cangjie.action.ListAction" scope="prototype">
+			<property name="listService" ref="listService"></property>
+		</bean>
 </beans>

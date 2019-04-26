@@ -1,6 +1,7 @@
 package online.cangjie;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import net.sf.json.JSONObject;
 import online.cangjie.interfaces.dao.AdminDao;
 import online.cangjie.interfaces.dao.AdminLogDao;
 import online.cangjie.po.AdminPo;
 import online.cangjie.po.LoginLogPo;
+import online.cangjie.utils.JSONUtil;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -45,5 +48,12 @@ public class TestSpring {
 		admin.setPassword("123");
 		adminDao.updatePassword(admin);
 		
+	}
+	
+	@Test
+	public void testListUtil(){
+		List<LoginLogPo> list = adminLogDao.selectLog();
+		JSONObject json = JSONUtil.listToJSON(list);
+		System.out.println(json.toString());
 	}
 }

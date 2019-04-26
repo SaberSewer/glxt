@@ -38,7 +38,7 @@ public class LoginLogDaoimpl implements AdminLogDao {
 	}
 
 	@Override
-	public List<?> selectLog() {
+	public List<LoginLogPo> selectLog() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Query query = session.createQuery("from LoginLogPo");

@@ -1,6 +1,7 @@
 package online.cangjie.action;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
 import online.cangjie.interfaces.service.AjaxService;
 import online.cangjie.po.AdminPo;
+import online.cangjie.po.LoginLogPo;
 import online.cangjie.utils.BeanUtil;
 import online.cangjie.utils.JSONUtil;
 
@@ -25,7 +27,6 @@ public class AjaxAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private Integer pageNo = 1;
 	private Integer pageSize = 10;
-	private Integer startRow;
 	@Autowired
 	private AjaxService ajaxService;
 
@@ -71,6 +72,13 @@ public class AjaxAction extends ActionSupport {
 		response.setContentType("application/json");
 		response.getWriter().print(json.toString());
 	}
+	
+	public void showLog(){
+		JSONObject json = new JSONObject();
+		List<LoginLogPo> list = ajaxService.getLog(pageNo, pageSize);
+		
+		
+	}
 
 	public AjaxService getAjaxService() {
 		return ajaxService;
@@ -78,6 +86,14 @@ public class AjaxAction extends ActionSupport {
 
 	public void setAjaxService(AjaxService ajaxService) {
 		this.ajaxService = ajaxService;
+	}
+
+	public Integer getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(Integer pageNo) {
+		this.pageNo = pageNo;
 	}
 
 }

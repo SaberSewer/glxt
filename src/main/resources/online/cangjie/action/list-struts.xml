@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts SYSTEM "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="list" namespace="/" extends="struts-default">
+		<action name="admin_info" class="listAction" method="toInfo">
+			<result name="admin_info">/admin_info.jsp</result>
+		</action>
+
+	</package>
+</struts>
