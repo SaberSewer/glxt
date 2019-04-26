@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts SYSTEM "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="article" namespace="/" extends="struts-default">
+		<action name="articleSort" class="articleAction" method="getTag">
+			<result name="tag">/article_Sort.jsp</result>
+		</action>
+		</package>
+</struts>
