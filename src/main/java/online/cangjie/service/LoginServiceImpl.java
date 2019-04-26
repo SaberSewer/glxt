@@ -3,6 +3,7 @@ package online.cangjie.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.itcast.common.page.Pagination;
 import online.cangjie.interfaces.dao.AdminDao;
 import online.cangjie.interfaces.dao.AdminLogDao;
 import online.cangjie.interfaces.service.LoginService;
@@ -18,14 +19,12 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public AdminPo login(AdminPo admin) {
-
 		AdminPo user = adminDao.selectAdminByUserNameAndPwd(admin);
 		return user;
 	}
 
 	@Override
 	public void saveLog(LoginLogPo log) {
-
 		adminLogDaoo.insertLog(log);
 	}
 

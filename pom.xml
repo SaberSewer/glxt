@@ -88,5 +88,12 @@
 			<artifactId>spring-web</artifactId>
 			<version>4.3.23.RELEASE</version>
 		</dependency>
+
+		<dependency>
+			<groupId>online.cangjie.page</groupId>
+			<artifactId>page</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 	</dependencies>
 </project>

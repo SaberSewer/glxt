@@ -153,11 +153,11 @@ function save_info(){
         	  
         	  
         		var json = {};
-        		json.sex = $("性别").val();
-        		json.age = $("年龄").val();
-        		json.phone = $("手机号码").val();
-        		json.email = $("邮箱").val();
-        		json.qq = $("QQ").val();
+        		json.sex = $("[name='性别']").val();
+        		json.age = $("[name='年龄']").val();
+        		json.phone = $("[name='手机号码']").val();
+        		json.email = $("[name='邮箱']").val();
+        		json.qq = $("[name='QQ']").val();
 
         		$.ajax({
         			url: "changeInfo.do",
@@ -166,7 +166,7 @@ function save_info(){
         			dataType : "json",
         			contentType: "application/json",
         			success: function (date){
-        				if(data.tag == "true"){
+        				if(date.tag == "true"){
         					layer.alert('修改成功！',{
         	                  title: '提示框',				
         	   			   icon:1,			   		

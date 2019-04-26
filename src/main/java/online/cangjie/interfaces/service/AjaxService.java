@@ -5,4 +5,5 @@ import online.cangjie.po.AdminPo;
 public interface AjaxService {
 	public boolean changePwd(AdminPo admin);
 	
+	public boolean changeInfo(AdminPo admin);
 }

@@ -15,6 +15,10 @@ import online.cangjie.po.LoginLogPo;
 
 public class LoginAction extends ActionSupport {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private AdminPo admin = new AdminPo();
 	private String Code;
 

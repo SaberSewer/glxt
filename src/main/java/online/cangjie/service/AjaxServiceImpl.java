@@ -21,4 +21,10 @@ public class AjaxServiceImpl implements AjaxService {
 		return adminDao.updatePassword(admin);
 	}
 
+	@Override
+	public boolean changeInfo(AdminPo admin) {
+		// TODO Auto-generated method stub
+		return adminDao.updateAdmin(admin);
+	}
+
 }

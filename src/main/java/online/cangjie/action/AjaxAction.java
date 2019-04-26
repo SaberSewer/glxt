@@ -19,6 +19,13 @@ import online.cangjie.utils.BeanUtil;
 import online.cangjie.utils.JSONUtil;
 
 public class AjaxAction extends ActionSupport {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer pageNo = 1;
+	private Integer pageSize = 10;
+	private Integer startRow;
 	@Autowired
 	private AjaxService ajaxService;
 
@@ -55,6 +62,14 @@ public class AjaxAction extends ActionSupport {
 		boolean tag = false;
 		Map<String, String> map = JSONUtil.getMap(request.getReader());
 		AdminPo admin = BeanUtil.getBean(map, new AdminPo());
+		tag = ajaxService.changeInfo(admin);
+		if(tag){
+			ActionContext.getContext().getSession().put("user", admin);
+		}
+		json.put("tag", Boolean.toString(tag));
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.getWriter().print(json.toString());
 	}
 
 	public AjaxService getAjaxService() {

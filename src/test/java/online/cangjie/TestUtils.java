@@ -6,7 +6,7 @@ import java.util.Map;
 import org.junit.Test;
 
 import online.cangjie.po.AdminPo;
-import online.cangjie.service.utils.BeanUtil;
+import online.cangjie.utils.BeanUtil;
 
 public class TestUtils {
 	@Test
