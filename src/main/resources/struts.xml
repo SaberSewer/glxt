@@ -7,4 +7,5 @@
 	<include file="online/cangjie/action/login-struts.xml"></include>
 	<include file="online/cangjie/action/ajax-struts.xml"></include>
 	<include file="online/cangjie/action/list-struts.xml"></include>
+	<include file="online/cangjie/action/article-struts.xml"></include>
 </struts>

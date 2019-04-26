@@ -17,4 +17,8 @@
 		<bean id="listAction" class="online.cangjie.action.ListAction" scope="prototype">
 			<property name="listService" ref="listService"></property>
 		</bean>
+		
+		<bean id="articleAction" class="online.cangjie.action.ArticleAction" scope="prototype">
+			<property name="articleTagService" ref="articleTagService"></property>
+		</bean>
 </beans>
