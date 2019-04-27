@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts SYSTEM "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="user" namespace="/" extends="struts-default">
+		<action name="user_list" class="userAction" method="initUser">
+			<result name="toUser">/user_list.jsp</result>
+		</action>
+	</package>
+</struts>
