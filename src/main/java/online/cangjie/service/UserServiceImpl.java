@@ -21,4 +21,16 @@ public class UserServiceImpl implements UserService {
 		return userDao.selectAll();
 	}
 
+	@Override
+	public boolean insertUser(UserPo user) {
+		// TODO Auto-generated method stub
+		return userDao.insertUser(user);
+	}
+
+	@Override
+	public boolean updateUser(UserPo user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

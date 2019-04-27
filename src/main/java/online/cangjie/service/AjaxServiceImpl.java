@@ -6,9 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import online.cangjie.interfaces.dao.AdminDao;
 import online.cangjie.interfaces.dao.ArticleTagDao;
+import online.cangjie.interfaces.dao.UserDao;
 import online.cangjie.interfaces.service.AjaxService;
 import online.cangjie.po.AdminPo;
 import online.cangjie.po.ArticleTagPo;
+import online.cangjie.po.UserPo;
 
 @Service("ajaxService")
 @Transactional
@@ -18,6 +20,9 @@ public class AjaxServiceImpl implements AjaxService {
 
 	@Autowired
 	private ArticleTagDao articleTagDao;
+	
+	@Autowired
+	private UserDao userDao;
 
 	@Override
 	public boolean changePwd(AdminPo admin) {
@@ -37,6 +42,12 @@ public class AjaxServiceImpl implements AjaxService {
 		// TODO Auto-generated method stub
 
 		return articleTagDao.insetTag(articleTag);
+	}
+
+	@Override
+	public UserPo getUser(Integer id) {
+		// TODO Auto-generated method stub
+		return userDao.selectUserById(id);
 	}
 
 }

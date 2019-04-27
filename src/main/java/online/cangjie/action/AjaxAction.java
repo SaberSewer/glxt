@@ -87,6 +87,12 @@ public class AjaxAction extends ActionSupport {
 		response.getWriter().print(json.toString());
 	}
 
+	public void getUserInfo() throws IOException{
+		JSONObject json = new JSONObject();
+		boolean tag = false;
+		Map<String, String> map = JSONUtil.getMap(request.getReader());
+		
+	}
 
 	public AjaxService getAjaxService() {
 		return ajaxService;
