@@ -67,4 +67,16 @@ public class UserDaoImpl implements UserDao {
 		return true;
 	}
 
+	@Override
+	public boolean deleteUserById(Integer id) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("delete UserPo where id = ?");
+		int i = query.executeUpdate();
+		if(i == 1){
+			return true;
+		}
+		return false;
+	}
+
 }

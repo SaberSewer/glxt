@@ -17,10 +17,8 @@ import online.cangjie.po.UserPo;
 public class AjaxServiceImpl implements AjaxService {
 	@Autowired
 	private AdminDao adminDao;
-
 	@Autowired
 	private ArticleTagDao articleTagDao;
-	
 	@Autowired
 	private UserDao userDao;
 
@@ -48,6 +46,18 @@ public class AjaxServiceImpl implements AjaxService {
 	public UserPo getUser(Integer id) {
 		// TODO Auto-generated method stub
 		return userDao.selectUserById(id);
+	}
+
+	@Override
+	public boolean deleteUser(Integer id) {
+		// TODO Auto-generated method stub
+		return userDao.deleteUserById(id);
+	}
+
+	@Override
+	public boolean deleteTag(Integer id) {
+		// TODO Auto-generated method stub
+		return articleTagDao.deleteTagById(id);
 	}
 
 }

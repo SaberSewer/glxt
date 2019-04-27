@@ -5,5 +5,7 @@
 		<action name="changePWD" class="ajaxAction" method="changePassword"></action>
 		<action name="changeInfo" class="ajaxAction" method="changeInf"></action> 
 		<action name="insertTag" class="ajaxAction" method="insertTag"></action>
+		<action name="deleteUser" class="ajaxAction" method="deleteUser"></action>
+		<action name="deleteTagById" class="ajaxAction" method="deleteTagById"></action>
 	</package>
 </struts>

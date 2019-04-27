@@ -21,15 +21,14 @@ public class ArticleTagDaoImpl implements ArticleTagDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	
+
 	@Override
 	@Transactional(propagation = Propagation.NOT_SUPPORTED)
-	public List<?> selectAllTag() {
+	public List<ArticleTagPo> selectAllTag() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Query query = session.createQuery("from ArticleTagPo");
-		List<?> list = query.list();
+		List<ArticleTagPo> list = query.list();
 		session.close();
 		return list;
 	}
@@ -41,7 +40,7 @@ public class ArticleTagDaoImpl implements ArticleTagDao {
 		articleTag.setDate(new Date());
 		Session session = sessionFactory.openSession();
 		Object obj = session.save(articleTag);
-		if(obj != null){
+		if (obj != null) {
 			return true;
 		}
 		return false;
@@ -54,14 +53,27 @@ public class ArticleTagDaoImpl implements ArticleTagDao {
 		Query query = session.createQuery("delete ArticleTagPo where id = ?");
 		Iterator<?> iterator = list.iterator();
 		int i = 0;
-		while(iterator.hasNext()){
+		while (iterator.hasNext()) {
 			query.setParameter(0, iterator.next());
 			i += query.executeUpdate();
 		}
-		if(i == list.size()){
+		if (i == list.size()) {
 			return true;
 		}
 		return false;
 	}
-	
+
+	@Override
+	public boolean deleteTagById(Integer id) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("delete ArticleTagPo where id = ?");
+		query.setParameter(0, id);
+		int i = query.executeUpdate();
+		if (i == 1) {
+			return true;
+		}
+		return false;
+	}
+
 }

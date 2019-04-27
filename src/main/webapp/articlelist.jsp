@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -41,15 +42,10 @@
       </div>
       <div class="widget-body">
          <ul class="b_P_Sort_list">
-             <li><i class="orange  fa fa-list "></i><a href="#">全部(235)</a></li>
-             <li><i class="fa fa-newspaper-o pink "></i> <a href="#">帮助中心(5)</a></li>
-             <li> <i class="fa fa-newspaper-o pink "></i> <a href="#">常见问题(3)</a> </li>
-             <li> <i class="fa fa-newspaper-o pink "></i> <a href="#">客服服务(3)</a></li>
-             <li> <i class="fa fa-newspaper-o pink "></i> <a href="#">购物指南(3)</a></li>
-             <li> <i class="fa fa-newspaper-o pink "></i> <a href="#">配送方式(33)</a></li>
-             <li> <i class="fa fa-newspaper-o pink "></i> <a href="#">支付方式(13)</a></li>
-             <li> <i class="fa fa-newspaper-o pink "></i> <a href="#">特色服务(23)</a></li>
-             <li><i class="fa fa-newspaper-o pink "></i> <a href="#">售后服务(6)</a></li>
+             <li><i class="orange  fa fa-list "></i><a href="#">全部</a></li>
+             <c:iterator value="list" status="statu" var="ss">
+             <li><i class="fa fa-newspaper-o pink "></i> <a href="#"><c:property value="name"/></a></li>
+             </c:iterator>
          </ul>
   </div>
   </div>

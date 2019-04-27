@@ -5,6 +5,8 @@
 		<action name="articleSort" class="articleAction" method="getTag">
 			<result name="tag">/article_Sort.jsp</result>
 		</action>
-		
+		<action name="articleList" class="articleAction" method="initList">
+			<result name="list">/articlelist.jsp</result>
+		</action>
 	</package>
 </struts>

@@ -12,4 +12,6 @@ public interface UserDao {
 	public UserPo selectUserById(Integer id);
 	
 	public boolean updateUser(UserPo user);
+	
+	public boolean deleteUserById(Integer id);
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -52,58 +53,22 @@
 			</tr>
 		</thead>
         <tbody>
-         <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>1234</td>
+        <c:iterator value="#session.tag" var="loggg">
+        
+        <tr>
+          <td><label><input type="checkbox" value="<c:property value='id'/>" id="tagid" class="ace"><span class="lbl"></span></label></td>
+          <td><c:property value="id"/></td>
           <td>1</td>
-          <td>帮助中心</td>
-          <td class="displayPart" displayLength="60">帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心</td>
-          <td>2016-7-25</td>
-          <td>启用</td>          
+          <td><c:property value="name"/></td>
+          <td class="displayPart" displayLength="60"><c:property value="preson"/></td>
+          <td><c:property value="date"/></td>
+          <td><c:if test="state == 1">启用</c:if><c:if test="state != 1">禁用</c:if></td>          
           <td class="td-manage">   
            <a title="编辑" onclick="member_edit('510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
            <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
           </td>
          </tr>
-          <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>1234</td>
-          <td>1</td>
-          <td>帮助中心</td>
-          <td class="displayPart" displayLength="60">帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心</td>
-          <td>2016-7-25</td>
-          <td>启用</td>          
-          <td class="td-manage">   
-           <a title="编辑" onclick="member_edit('510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
-           <a title="删除" href="javascript:;"  onclick="member_del(this,'3')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-         </tr>
-          <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>1234</td>
-          <td>1</td>
-          <td>帮助中心</td>
-          <td class="displayPart" displayLength="60">帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心</td>
-          <td>2016-7-25</td>
-          <td>启用</td>          
-          <td class="td-manage">   
-           <a title="编辑" onclick="member_edit('510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
-           <a title="删除" href="javascript:;"  onclick="member_del(this,'4')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-         </tr>
-          <tr>
-          <td><label><input type="checkbox" class="ace"><span class="lbl"></span></label></td>
-          <td>1234</td>
-          <td>1</td>
-          <td>帮助中心</td>
-          <td class="displayPart" displayLength="60">帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心帮助中心</td>
-          <td>2016-7-25</td>
-          <td>启用</td>          
-          <td class="td-manage">   
-           <a title="编辑" onclick="member_edit('510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="fa fa-edit bigger-120"></i></a>      
-           <a title="删除" href="javascript:;"  onclick="member_del(this,'5')" class="btn btn-xs btn-danger" ><i class="fa fa-trash  bigger-120"></i></a>
-          </td>
-         </tr>
+          </c:iterator>
         </tbody>
         </table>
      </div>
@@ -206,8 +171,25 @@ $(function() {
 /*文章-删除*/
 function member_del(obj,id){
 	layer.confirm('确认要删除吗？',{icon:0,},function(index){
-		$(obj).parents("tr").remove();
-		layer.msg('已删除!',{icon:1,time:1000});
+		var json = {};
+		json.id = $("#tagid").val();
+		  $.ajax({
+	           url: "deleteTagById.do",
+	           type:"post",
+	           dataType: "json",
+	           contentType:"application/json;charset=utf-8",
+	           data:json,
+	           success: function (date) {
+        	   
+	        	   $(obj).parents("tr").remove();
+	       		layer.msg('已删除!',{icon:1,time:1000});
+	           },
+	           error:function (){
+	               
+	           }
+	           
+	       })
+		
 	});
 }
 </script>

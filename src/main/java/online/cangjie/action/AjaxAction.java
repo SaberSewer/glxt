@@ -1,7 +1,6 @@
 package online.cangjie.action;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,10 +14,9 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
 import online.cangjie.interfaces.service.AjaxService;
-import online.cangjie.interfaces.service.ArticleTagService;
 import online.cangjie.po.AdminPo;
 import online.cangjie.po.ArticleTagPo;
-import online.cangjie.po.LoginLogPo;
+import online.cangjie.po.UserPo;
 import online.cangjie.utils.BeanUtil;
 import online.cangjie.utils.JSONUtil;
 
@@ -92,6 +90,29 @@ public class AjaxAction extends ActionSupport {
 		boolean tag = false;
 		Map<String, String> map = JSONUtil.getMap(request.getReader());
 		
+	}
+	
+	public void deleteUser() throws IOException, IllegalArgumentException, IllegalAccessException{
+		JSONObject json = new JSONObject();
+		boolean tag = false;
+		Map<String, String> map = JSONUtil.getMap(request.getReader());
+		UserPo user = BeanUtil.getBean(map, new UserPo());
+		tag = ajaxService.deleteUser(user.getId());
+		json.put("tag", Boolean.toString(tag));
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.getWriter().print(json.toString());
+	}
+	
+	public void deleteTagById() throws IOException, IllegalArgumentException, IllegalAccessException{
+		JSONObject json = new JSONObject();
+		boolean tag = false;
+		Map<String, String> map = JSONUtil.getMap(request.getReader());
+		tag = ajaxService.deleteTag(Integer.parseInt(map.get("id")));
+		json.put("tag", Boolean.toString(tag));
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.getWriter().print(json.toString());
 	}
 
 	public AjaxService getAjaxService() {

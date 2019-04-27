@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="online.cangjie.po.CompositionPo" table="composition">
+		<id name="id">
+			<column name="id"></column>
+			<generator class="native"></generator>
+		</id>
+		<property name="title">
+			<column name="composition_title"></column>
+		</property>
+		<property name="tagId">
+			<column name="tag_id"></column>
+		</property>
+		<property name="preson">
+			<column name="composition_preson"></column>
+		</property>
+		<property name="date" type="date">
+			<column name="composition_date"></column>
+		</property>
+		<property name="state">
+			<column name="composition_state"></column>
+		</property>
+	</class>
+</hibernate-mapping>
