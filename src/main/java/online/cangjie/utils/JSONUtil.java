@@ -3,6 +3,7 @@ package online.cangjie.utils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +15,8 @@ public class JSONUtil {
 	public static Map<String, String> getMap(BufferedReader reader) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
-			String str[] = reader.readLine().split("&");
+			String url = URLDecoder.decode(reader.readLine(), "UTF-8");
+			String str[] = url.split("&");
 			;
 			for (int i = 0; i < str.length; i++) {
 				String property[] = str[i].split("=");

@@ -114,13 +114,10 @@
  <div class="add_content" id="form-article-add">
     <ul>
      <li class="clearfix Mandatory"><label class="label_name"><i>*</i>分类名称</label>
-     <span class="formControls w_txt"><input name="分类名称" type="text" id="form-field-1" class="col-xs-7 col-sm-5 "></span>
-     </li>
-     <li class="clearfix"><label class="label_name">排序</label>
-     <span class="formControls w_txt"><input name="排序" type="text" id="form-field-1" value="0" class="col-xs-7 col-sm-2 "></span>
+     <span class="formControls w_txt"><input name="分类名称" type="text" id="name" class="col-xs-7 col-sm-5 "></span>
      </li>
      <li class="clearfix"><label class="label_name">简介</label>
-     <span class="formControls w_txt"><textarea name="权限描述" class="form-control" id="form_textarea" placeholder="" onkeyup="checkLength(this);"></textarea><span  style=" margin-left:10px;">剩余字数：<span id="sy" style="color:Red;">200</span>字</span></span>
+     <span class="formControls w_txt"><textarea name="权限描述" class="form-control" id="preson" placeholder="" onkeyup="checkLength(this);"></textarea><span  style=" margin-left:10px;">剩余字数：<span id="sy" style="color:Red;">200</span>字</span></span>
      </li>
     </ul>
  </div>
@@ -172,11 +169,35 @@ $(function() {
 		 });
 		  if(num>0){  return false;}	 	
           else{
-			  layer.alert('添加成功！',{
-               title: '提示框',				
-			icon:1,		
-			  });
-			   layer.close(index);	
+        	  var json = {};
+        	  json.name = $("#name").val();
+        	  json.preson = $("#preson").val();
+        	  console.log(json);
+              $.ajax({
+                  url: "insertTag.do",
+                  type:"post",
+                  dataType: "json",
+                  data:json,
+                  contentType:"application/json;charset=utf-8",
+                  success: function (date) {
+                	  if(date.tag == "true"){
+                	  layer.alert('添加成功！',{
+                          title: '提示框',				
+           			icon:1,		
+           			  });
+                	  }
+                	  layer.close(index);
+                  },
+                  error: function(){
+                	  layer.alert('添加失败！',{
+                          title: '提示框',				
+           			icon:1,		
+           			  });
+                	  layer.close(index);
+                  }
+              })
+			
+			  	
 		  }		  
 			
 		}

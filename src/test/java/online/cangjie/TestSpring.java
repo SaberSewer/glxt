@@ -1,5 +1,6 @@
 package online.cangjie;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import net.sf.json.JSONObject;
 import online.cangjie.interfaces.dao.AdminDao;
 import online.cangjie.interfaces.dao.AdminLogDao;
+import online.cangjie.interfaces.dao.ArticleTagDao;
 import online.cangjie.po.AdminPo;
+import online.cangjie.po.ArticleTagPo;
 import online.cangjie.po.LoginLogPo;
 import online.cangjie.utils.JSONUtil;
 
@@ -24,7 +27,8 @@ public class TestSpring {
 	private AdminDao adminDao;
 	@Autowired
 	private AdminLogDao adminLogDao;
-	
+	@Autowired
+	private ArticleTagDao articleTagDao;
 	
 	@Test
 	public void testSpring(){
@@ -55,5 +59,21 @@ public class TestSpring {
 		List<LoginLogPo> list = adminLogDao.selectLog();
 		JSONObject json = JSONUtil.listToJSON(list);
 		System.out.println(json.toString());
+	}
+	
+	@Test
+	public void testInsetHql(){
+		ArticleTagPo articleTag = new ArticleTagPo();
+		articleTag.setName("hahaha");
+		articleTag.setPreson("xxxxxx");
+		System.out.println(articleTagDao.insetTag(articleTag));
+	}
+	
+	@Test
+	public void testDeleteHQL(){
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(1);
+		list.add(2);
+		System.out.println(articleTagDao.deleteTag(list));
 	}
 }

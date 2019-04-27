@@ -18,12 +18,13 @@ public class ArticleAction extends ActionSupport{
 	@Autowired
 	private ArticleTagService articleTagService;
 	
+	//初始化页面
 	public String getTag(){
 		List<?> list = articleTagService.getArticleTag();
 		ActionContext.getContext().getSession().put("tag", list);
 		return "tag";
 	}
-
+	
 	public ArticleTagService getArticleTagService() {
 		return articleTagService;
 	}

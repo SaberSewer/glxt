@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="online.cangjie.po.ArticleTagPo" table="article_tag">
+		<id name="id">
+		<column name="article_id"></column>
+		<generator class="native"></generator>
+		</id>
+		<property name="name">
+			<column name="article_name"></column>
+		</property>
+		<property name="preson">
+			<column name="article_preson"></column>
+		</property>
+		<property name="date" type="date">
+			<column name="article_date"></column>
+		</property>
+		<property name="state">
+			<column name="article_state"></column>
+		</property>
+	</class>
+</hibernate-mapping>

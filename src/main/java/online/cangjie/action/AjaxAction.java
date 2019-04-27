@@ -15,7 +15,9 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
 import online.cangjie.interfaces.service.AjaxService;
+import online.cangjie.interfaces.service.ArticleTagService;
 import online.cangjie.po.AdminPo;
+import online.cangjie.po.ArticleTagPo;
 import online.cangjie.po.LoginLogPo;
 import online.cangjie.utils.BeanUtil;
 import online.cangjie.utils.JSONUtil;
@@ -42,7 +44,7 @@ public class AjaxAction extends ActionSupport {
 			Map<String, Object> session = ActionContext.getContext().getSession();
 			AdminPo admin = (AdminPo) session.get("user");
 			System.out.println(session);
-			if(admin.getPassword().equals(map.get("oldpwd"))){
+			if (admin.getPassword().equals(map.get("oldpwd"))) {
 				admin.setPassword(map.get("pwd"));
 				tag = ajaxService.changePwd(admin);
 				session.clear();
@@ -51,20 +53,20 @@ public class AjaxAction extends ActionSupport {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		json.put("tag", Boolean.toString(tag));
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
 		response.getWriter().print(json.toString());
 	}
-	
-	public void changeInf() throws IOException, IllegalArgumentException, IllegalAccessException{
+
+	public void changeInf() throws IOException, IllegalArgumentException, IllegalAccessException {
 		JSONObject json = new JSONObject();
 		boolean tag = false;
 		Map<String, String> map = JSONUtil.getMap(request.getReader());
 		AdminPo admin = BeanUtil.getBean(map, new AdminPo());
 		tag = ajaxService.changeInfo(admin);
-		if(tag){
+		if (tag) {
 			ActionContext.getContext().getSession().put("user", admin);
 		}
 		json.put("tag", Boolean.toString(tag));
@@ -72,13 +74,19 @@ public class AjaxAction extends ActionSupport {
 		response.setContentType("application/json");
 		response.getWriter().print(json.toString());
 	}
-	
-	public void showLog(){
+
+	public void insertTag() throws IOException, IllegalArgumentException, IllegalAccessException {
 		JSONObject json = new JSONObject();
-		List<LoginLogPo> list = ajaxService.getLog(pageNo, pageSize);
-		
-		
+		boolean tag = false;
+		Map<String, String> map = JSONUtil.getMap(request.getReader());
+		ArticleTagPo articleTag = BeanUtil.getBean(map, new ArticleTagPo());
+		tag = ajaxService.insetTag(articleTag);
+		json.put("tag", Boolean.toString(tag));
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.getWriter().print(json.toString());
 	}
+
 
 	public AjaxService getAjaxService() {
 		return ajaxService;
