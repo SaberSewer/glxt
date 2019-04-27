@@ -21,4 +21,7 @@
 		<bean id="articleAction" class="online.cangjie.action.ArticleAction" scope="prototype">
 			<property name="articleTagService" ref="articleTagService"></property>
 		</bean>
+		<bean id="userAction" class="online.cangjie.action.UserAction" scope="prototype">
+			<property name="userService" ref="userService"></property>
+		</bean>
 </beans>
