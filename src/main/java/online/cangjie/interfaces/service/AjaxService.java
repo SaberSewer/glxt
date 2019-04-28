@@ -16,4 +16,6 @@ public interface AjaxService {
 	public boolean deleteUser(Integer id);
 	
 	public boolean deleteTag(Integer id);
+	
+	public boolean addUser(UserPo user);
 }

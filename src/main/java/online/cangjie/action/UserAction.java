@@ -15,6 +15,7 @@ public class UserAction extends ActionSupport{
 
 	public String initUser(){
 		list = userService.getAllInfo();
+		System.out.println(list);
 		return "toUser";
 	}
 	

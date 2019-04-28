@@ -7,5 +7,6 @@
 		<action name="insertTag" class="ajaxAction" method="insertTag"></action>
 		<action name="deleteUser" class="ajaxAction" method="deleteUser"></action>
 		<action name="deleteTagById" class="ajaxAction" method="deleteTagById"></action>
+		<action name="addUser" class="ajaxAction" method="addUser"></action>
 	</package>
 </struts>

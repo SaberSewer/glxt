@@ -114,6 +114,18 @@ public class AjaxAction extends ActionSupport {
 		response.setContentType("application/json");
 		response.getWriter().print(json.toString());
 	}
+	
+	public void addUser() throws IOException, IllegalArgumentException, IllegalAccessException{
+		JSONObject json = new JSONObject();
+		boolean tag = false;
+		Map<String, String> map = JSONUtil.getMap(request.getReader());
+		UserPo user = BeanUtil.getBean(map, new UserPo());
+		tag = ajaxService.addUser(user);
+		json.put("tag", Boolean.toString(tag));
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.getWriter().print(json.toString());
+	}
 
 	public AjaxService getAjaxService() {
 		return ajaxService;

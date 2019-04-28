@@ -1,8 +1,9 @@
 package online.cangjie.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CompositionPo {
+public class CompositionPo implements Serializable {
 	private Integer id;
 	private String title;
 	private Integer tagId;

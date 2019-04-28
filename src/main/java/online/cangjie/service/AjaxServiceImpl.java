@@ -25,7 +25,6 @@ public class AjaxServiceImpl implements AjaxService {
 	@Override
 	public boolean changePwd(AdminPo admin) {
 		// TODO Auto-generated method stub
-
 		return adminDao.updatePassword(admin);
 	}
 
@@ -38,7 +37,6 @@ public class AjaxServiceImpl implements AjaxService {
 	@Override
 	public boolean insetTag(ArticleTagPo articleTag) {
 		// TODO Auto-generated method stub
-
 		return articleTagDao.insetTag(articleTag);
 	}
 
@@ -59,5 +57,12 @@ public class AjaxServiceImpl implements AjaxService {
 		// TODO Auto-generated method stub
 		return articleTagDao.deleteTagById(id);
 	}
+
+	@Override
+	public boolean addUser(UserPo user) {
+		// TODO Auto-generated method stub
+		return userDao.insertUser(user);
+	}
+	
 
 }

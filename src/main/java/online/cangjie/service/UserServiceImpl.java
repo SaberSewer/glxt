@@ -1,5 +1,6 @@
 package online.cangjie.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean insertUser(UserPo user) {
 		// TODO Auto-generated method stub
+		user.setLevel(0);
+		user.setJoin(new Date());
 		return userDao.insertUser(user);
 	}
 
